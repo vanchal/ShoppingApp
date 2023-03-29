@@ -8,7 +8,7 @@ const knexConfig = {
   client: "postgresql",
   connection: {
     database: "shopping",
-    user: "tnluser",
+    user: "anchal",
     password: null,
   },
 

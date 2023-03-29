@@ -3,6 +3,7 @@ const {
   getCartDetails,
   updateCart,
   deleteItem,
+  emptyCart,
 } = require("../models/cart");
 const { updateProductState } = require("./product");
 
@@ -100,9 +101,24 @@ async function deleteCartItem(req, res) {
   }
 }
 
+//deleteCart
+async function clearCart(req,res) {
+  try{
+    const userId = req.session.userid;
+    const cart_cleared = await emptyCart({userId});
+    if(!cart_cleared){
+      return res.status(400).send({ error: "Cart could not be deleted" });
+    }
+    return res.status(200).send({ message: "Cart deleted successfully" });
+  }catch (error) {
+    return res.status(400).send({ error: error.message });
+  }
+}
+
 module.exports = {
   addToCart,
   getCartItems,
   updateCartItem,
   deleteCartItem,
+  clearCart,
 };

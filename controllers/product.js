@@ -2,7 +2,6 @@ const {
   prodList,
   prodId,
   category,
-  updateState,
   productCartList,
 } = require("../models/product");
 
@@ -54,31 +53,30 @@ async function getCategory(req, res) {
 
 // update state of item in productlist if present in cart
 
-async function updateProductState(productId, incart) {
-  try {
-    // const userId = req.session.userid;
-    // const { incart } = req.body;
-    // const productId = req.params.productId;
+// async function updateProductState(productId, incart) {
+//   try {
+//     // const userId = req.session.userid;
+//     // const { incart } = req.body;
+//     // const productId = req.params.productId;
 
-    const updated_product_state = await updateState({
-      productId,
-      incart,
-    });
-    if (!updated_product_state) {
-      //   return res.status(400).send({ error: "Item state could not be updated" });
-      return false;
-    }
-    // return res.status(200).send({ message: "product state updated" });
-    return true;
-  } catch (error) {
-    console.log(error);
-    return res.status(400).send({ error: error.message });
-  }
-}
+//     const updated_product_state = await updateState({
+//       productId,
+//       incart,
+//     });
+//     if (!updated_product_state) {
+//       //   return res.status(400).send({ error: "Item state could not be updated" });
+//       return false;
+//     }
+//     // return res.status(200).send({ message: "product state updated" });
+//     return true;
+//   } catch (error) {
+//     console.log(error);
+//     return res.status(400).send({ error: error.message });
+//   }
+// }
 
 module.exports = {
   getProd,
   getProdById,
   getCategory,
-  updateProductState,
 };

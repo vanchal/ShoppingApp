@@ -15,4 +15,8 @@ router.delete(
   cartController.deleteCartItem
 );
 
+router.delete(
+  "/emptyCart", jwtAuthenticator, cartController.clearCart
+);
+
 module.exports = router;

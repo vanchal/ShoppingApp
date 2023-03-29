@@ -46,9 +46,18 @@ const deleteItem = ({ userId, productId }) => {
   return knex("cart").where({ userId, productId }).del().returning("*");
 };
 
+
+// clear cart
+const emptyCart = ({userId}) => {
+  return knex("cart").where({userId}).del().returning("*");
+};
+
+
+
 module.exports = {
   addItemCart,
   getCartDetails,
   updateCart,
   deleteItem,
+  emptyCart,
 };
